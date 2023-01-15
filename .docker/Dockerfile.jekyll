@@ -1,0 +1,15 @@
+FROM ruby:2.7.3-alpine
+
+ARG JEKYLL_SITEDIR=/usr/local/site
+RUN apk --update add --no-cache --virtual .build_deps \
+    build-base ruby-dev libc-dev linux-headers \
+ && gem install --verbose --no-document \
+    github-pages \
+ && apk del .build_deps \
+ && mkdir -p ${JEKYLL_SITEDIR} \
+ && rm -rf /usr/lib/ruby/gems/*/cache/*.gem
+
+ARG JEKYLL_SITEDIR
+WORKDIR ${JEKYLL_SITEDIR}
+
+CMD ["jekyll", "serve", "-H", "0.0.0.0", "-P", "4000"]
