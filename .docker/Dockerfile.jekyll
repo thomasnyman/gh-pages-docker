@@ -2,11 +2,12 @@ FROM ruby:2.7.3-alpine
 
 ARG JEKYLL_SITEDIR=/usr/local/site
 ARG BUNDLER_VERSION=2.4.8
+ARG PAGES_GEM_VERSION=228
 RUN apk --update add --no-cache --virtual .build_deps \
     build-base ruby-dev libc-dev linux-headers \
  && gem install --verbose --no-document \
     bundler:${BUNDLER_VERSION} \
-    github-pages \
+    github-pages:${PAGES_GEM_VERSION} \
  && apk del .build_deps \
  && mkdir -p ${JEKYLL_SITEDIR} \
  && rm -rf /usr/lib/ruby/gems/*/cache/*.gem
