@@ -12,7 +12,9 @@ RUN apk --update add --no-cache --virtual .build_deps \
  && mkdir -p ${JEKYLL_SITEDIR} \
  && rm -rf /usr/lib/ruby/gems/*/cache/*.gem
 
+COPY bundle-exec.sh /usr/local/bin/bundle-exec.sh
+
 ARG JEKYLL_SITEDIR
 WORKDIR ${JEKYLL_SITEDIR}
 
-CMD ["jekyll", "serve", "-H", "0.0.0.0", "-P", "4000"]
+CMD ["bundle-exec.sh", "jekyll", "serve", "-H", "0.0.0.0", "-P", "4000"]
