@@ -8,6 +8,7 @@ RUN apk --update add --no-cache --virtual .build_deps \
  && gem install --verbose --no-document \
     bundler:${BUNDLER_VERSION} \
     github-pages:${PAGES_GEM_VERSION} \
+    faraday-retry \
  && apk del .build_deps \
  && mkdir -p ${JEKYLL_SITEDIR} \
  && rm -rf /usr/lib/ruby/gems/*/cache/*.gem
