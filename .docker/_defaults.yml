@@ -2,7 +2,7 @@
 source              : .
 destination         : ./_site
 collections_dir     : .
-plugins_dir         : _plugins # takes an array of strings and loads plugins in that order
+plugins_dir         : /usr/local/jekyll/_plugins
 layouts_dir         : _layouts
 data_dir            : _data
 includes_dir        : _includes
@@ -69,6 +69,9 @@ liquid:
   error_mode        : warn
   strict_filters    : false
   strict_variables  : false
+
+feed:
+  disable           : true
 
 # Markdown Processors
 kramdown:

@@ -15,6 +15,7 @@ RUN apk --update add --no-cache --virtual .build_deps \
 
 COPY bundle-exec.sh /usr/local/bin/bundle-exec.sh
 COPY _defaults.yml /usr/local/etc/_defaults.yml
+COPY feed_generator_override.rb /usr/local/jekyll/_plugins/feed_generator_override.rb
 
 ARG JEKYLL_SITEDIR
 WORKDIR ${JEKYLL_SITEDIR}
